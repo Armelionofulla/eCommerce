@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     # Created Apps
     'category',
     'accounts',
+    'store',
 
 ]
 
