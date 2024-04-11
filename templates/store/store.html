@@ -3,10 +3,15 @@
 {% block content %}
     <!-- ========================= SECTION PAGETOP ========================= -->
     <section class="section-pagetop bg">
+    {% if 'search' in request.path %}
+        <div class="container">
+            <h2 class="title-page">Search results.</h2>
+        </div> <!-- container //  -->
+    {% else %}    
         <div class="container">
             <h2 class="title-page">Our Store</h2>
-
         </div> <!-- container //  -->
+    {% endif %}
     </section>
     <!-- ========================= SECTION INTRO END// ========================= -->
     <!-- ========================= SECTION CONTENT ========================= -->
@@ -121,12 +126,13 @@
 
                     <header class="border-bottom mb-4 pb-3">
                         <div class="form-inline">
-                            <span class="mr-md-auto">Found <b>{{ product_count }}</b> Items. </span>
+                            <span class="mr-md-auto"> <b>{{ product_count }}</b> Items Found. </span>
 
                         </div>
                     </header><!-- sect-heading -->
 
                     <div class="row">
+                    {% if products %}
                         {% for product in products %}
                             <div class="col-md-4">
                                 <figure class="card card-product-grid">
@@ -149,7 +155,11 @@
                                 </figure>
                             </div> <!-- col.// -->
                         {% endfor %}
-
+                    {% else %}
+                        <div>
+                            <h2>  No Results Found.</h2>
+                        </div>
+                    {% endif %}
                     </div> <!-- row end.// -->
 
 
